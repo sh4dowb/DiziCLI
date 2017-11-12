@@ -23,16 +23,27 @@ def download_callback(downloader):
 
 def run(argv):
     parser = argparse.ArgumentParser(description='Dizicli - Watch, Download, Crawl TV Series')
+    
     parser.add_argument('dizi', metavar='Family Guy', help='Name of the TV Show', type=str)
+    
     parser.add_argument('season', metavar='12', help='Season number', type=int)
+    
     parser.add_argument('episode', metavar='15', help='Episode number', type=int)
+    
     parser.add_argument('--site', metavar='dizilab', help='Website to crawl', type=str, default='',
                         choices=list(crawler.dizisites.keys()))
+                        
     parser.add_argument('-o', dest="output", metavar='output.json',
                         help='Output file for crawling result', type=str)
+                        
     parser.add_argument('--vlc', metavar='/vlc/binary/destination',
                         help='Link VLC executable to play this episode',
                         type=str)
+                        
+    parser.add_argument('-exc', metavar='next',
+						help='Run functions',
+                        type=str)
+                        
     parser.add_argument('-d', dest="download",
                         help='If given, episode is downloaded with highest quality.',
                         action='store_true', default=False)
@@ -41,10 +52,13 @@ def run(argv):
         args = parser.parse_args(argv)
     except:
         return
-
+	if not os.path.isdir('.dizicli/'):
+		os.makedirs('.dizicli/')
+    f = open(".dizicli/cache.dzclifile", "w")
+    subprocess.call(["echo 'site:"+args.site+"\n dizi:"+args.dizi+"\n sezon:"+args.season+"\n bolum:"+args.episode+])
     c = DiziCrawler(args.site, args.dizi, args.season, args.episode)
     episode = c.get_sources()
-
+	
     out_text = json.dumps(episode)
     if args.output is not None:
         with open(args.output, 'w') as f:
@@ -56,6 +70,8 @@ def run(argv):
     if args.vlc is not None and len(episode['video_links']) > 0:
         if args.vlc == 'web':
             webbrowser.open_new_tab(episode['video_links'][-1]['url'])
+        if args.vlc == 'web' and args.exc == 'next':
+            subprocess.call([args.vlc, '-f', episode['video_links'][-1]['url']])
         else:
             subprocess.call([args.vlc, '-f', episode['video_links'][-1]['url']])
 
