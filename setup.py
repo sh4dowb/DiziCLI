@@ -13,7 +13,7 @@ setup(
     entry_points={
         'console_scripts': [
             'dizicli = dizicli.bin:main',
-            'filmcli = filmcli.bin_movie:main'
+            'filmcli = dizicli.bin_movie:main'
         ],
     },
     install_requires=['requests', 'pyquery', 'demjson', 'pget', 'furl', 'PyExecJS'],
