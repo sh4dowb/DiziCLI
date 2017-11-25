@@ -42,7 +42,8 @@ Opisiyonel Argümanlar:
   -d                    En yüksek kalitede dosyayı indirir
 ```
 ## Örnek Kullanım
-
+### Temel Örneği
+[Temel Ornek Kullanım](ornekler/1.gif)
 # FilmCLI
 ***Askıya Alındı***
 ## Kaynaklar
