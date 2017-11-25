@@ -43,7 +43,7 @@ Opisiyonel Argümanlar:
 ```
 ## Örnek Kullanım
 ### Temel Örneği
-[Temel Ornek Kullanım](ornekler/1.gif)
+![Temel Ornek Kullanım](1.gif)
 # FilmCLI
 ***Askıya Alındı***
 ## Kaynaklar
