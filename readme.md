@@ -30,9 +30,9 @@ usage: dizicli [-h] [--site dizilab] [-o output.json]
 Dizicli - Watch, Download, Crawl TV Series
 
 Gerekli Argümanlar:
-  'The Orville'         Name of the TV Show
-  1                     Season number
-  10                    Episode number
+  'The Orville'         Dizinin Adı 
+  1                     Sezon
+  10                    Bölüm
 
 Opisiyonel Argümanlar:
   -h, --help            Kullanım Klavuzunu Açar
